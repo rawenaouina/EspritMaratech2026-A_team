@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Skip to content (WCAG) */
+.skip-link{
+  position:absolute;
+  left:-9999px; top:auto;
+  width:1px; height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:16px; top:16px;
+  width:auto; height:auto;
+  padding:12px 16px;
+  border-radius:16px;
+  background:white; color:black;
+  border:2px solid black;
+  z-index:9999;
+}
+
+/* Visual settings (brightness/contrast) */
+:root{ --brightness: 1; --contrast: 1; }
+body{ filter: brightness(var(--brightness)) contrast(var(--contrast)); }
+
+/* Theme */
+:root { color-scheme: light; }
+html.dark { color-scheme: dark; }
+
+/* A11y: bigger text + bigger tap targets */
+html.a11y { font-size: 112%; }
+html.a11y button,
+html.a11y a,
+html.a11y input,
+html.a11y textarea,
+html.a11y select{
+  min-height: 44px;
+}
+
+/* Focus visible (WCAG) */
+*:focus-visible{
+  outline: 3px solid #0ea5e9;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Base */
+body { @apply bg-white text-slate-900; }
+html.dark body { @apply bg-slate-950 text-slate-50; }
+
+/* Shared card */
+.card { @apply rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-950; }
+
+/* RTL small helper */
+html[dir="rtl"] * { letter-spacing: 0 !important; }
+
+/* Truncate helpers */
+.line-clamp-2, .line-clamp-3{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2{ -webkit-line-clamp: 2; }
+.line-clamp-3{ -webkit-line-clamp: 3; }
